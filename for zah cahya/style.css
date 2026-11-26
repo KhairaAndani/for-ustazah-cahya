@@ -1,0 +1,335 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --cream: #fffaf4;
+  --pink: #f8dce3;
+  --pink-dark: #e99aaa;
+  --coral: #d9787e;
+  --brown: #654c45;
+  --sage: #b8c7a5;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+.tiny-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: var(--coral);
+  margin-bottom: 22px;
+}
+
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(30px, 8vw, 39px);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 27px;
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #9a827a;
+  margin-bottom: 30px;
+}
+
+/* Envelope */
+
+.envelope {
+  position: relative;
+  width: 190px;
+  height: 145px;
+  margin: 0 auto 34px;
+  background: var(--pink);
+  border-radius: 12px;
+  box-shadow: 0 12px 25px #e7c4c84d;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #f3cbd5;
+  clip-path: polygon(0 0, 100% 0, 50% 75%);
+  border-radius: 12px;
+  z-index: 3;
+}
+
+.envelope-front span {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--coral);
+  font-size: 30px;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  background: #e9b8c5;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+  border-radius: 12px;
+  z-index: 4;
+  transform-origin: top;
+  transition: transform 0.7s ease;
+}
+
+.letter-preview {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 20px;
+  height: 100px;
+  background: var(--white);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  padding-top: 22px;
+  color: var(--coral);
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open {
+  animation: none;
+}
+
+/* Buttons */
+
+.main-button {
+  border: none;
+  background: var(--coral);
+  color: white;
+  padding: 15px 25px;
+  min-height: 50px;
+  border-radius: 50px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 7px 15px #d9787e30;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.main-button:active {
+  transform: scale(0.96);
+}
+
+.main-button span {
+  margin-left: 10px;
+  font-size: 17px;
+}
+
+.small-note {
+  margin-top: 22px;
+  font-size: 10px;
+  color: #b6a19a;
+  letter-spacing: 1px;
+}
+
+/* Letter page */
+
+.letter-card {
+  background: white;
+  border: 1px solid #f3e4df;
+  border-radius: 18px;
+  padding: 26px 22px;
+  margin-bottom: 26px;
+  text-align: left;
+  box-shadow: 0 10px 30px #cdb7a51a;
+}
+
+.letter-card p {
+  font-size: 14px;
+  line-height: 1.95;
+  white-space: pre-line;
+  color: #806b64;
+}
+
+.flower {
+  position: absolute;
+  color: var(--pink-dark);
+  font-size: 40px;
+  opacity: 0.7;
+  animation: float 4s ease-in-out infinite;
+}
+
+.flower-one {
+  top: 45px;
+  left: 18px;
+}
+
+.flower-two {
+  right: 20px;
+  bottom: 65px;
+  color: var(--sage);
+}
+
+/* Ending */
+
+.bouquet {
+  font-size: 70px;
+  margin-bottom: 24px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.final-message {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #927b73;
+  max-width: 290px;
+  margin: 0 auto 24px;
+}
+
+.heart {
+  font-size: 40px;
+  color: var(--coral);
+  margin-bottom: 18px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.signature {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+/* Floating petals */
+
+.petal {
+  position: fixed;
+  top: -20px;
+  color: #e9aab8;
+  opacity: 0.6;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 0;
+}
+
+.app {
+  z-index: 1;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Small phones */
+
+@media (max-width: 360px) {
+  .app {
+    padding: 24px 18px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .letter-card {
+    padding: 22px 18px;
+  }
+
+  .letter-card p {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
